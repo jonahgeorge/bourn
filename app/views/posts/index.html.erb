@@ -1,9 +1,8 @@
-<div class="card">
-  <ul class="list-group list-group-flush">
-    <% @posts.each do |post| %>
-      <%= link_to post, class: "list-group-item" do %>
-      <p class="card-text"><%= post.title %></p>
-      <% end %>
+<ul class="list-group">
+  <% @posts.each do |post| %>
+    <%= link_to post, class: "list-group-item" do %>
+    <p class="list-group-item-text"><%= post.title %></p>
+    <p class="list-group-item-text"><small class="text-muted"><%= post.created_at.to_formatted_s(:short) %></small></p>
     <% end %>
-  </ul>
-</div>
+  <% end %>
+</ul>

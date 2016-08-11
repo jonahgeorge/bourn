@@ -1,9 +1,9 @@
-<% @posts.each do |post| %>
-  <div class="card card-block">
-      <h4 class="card-title"><%= post.title %></h4>
-      <% if post.body %>
-        <p class="card-text"><%= post.body %></p>
+<div class="card">
+  <ul class="list-group list-group-flush">
+    <% @posts.each do |post| %>
+      <%= link_to post, class: "list-group-item" do %>
+      <p class="card-text"><%= post.title %></p>
       <% end %>
-      <%= link_to "Read more", post, class: "card-link" %>
-  </div>
-<% end %>
+    <% end %>
+  </ul>
+</div>

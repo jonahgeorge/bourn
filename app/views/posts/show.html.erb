@@ -1,2 +1,6 @@
 <h1><%= @post.title %></h1>
-<p><%= @post.body %></p>
+
+<%= markdown(@post.body) %>
+
+<%= link_to "Edit post", edit_post_path(@post), class: "btn btn-primary" %>
+

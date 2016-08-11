@@ -1,0 +1,9 @@
+<% @posts.each do |post| %>
+  <div class="card card-block">
+      <h4 class="card-title"><%= post.title %></h4>
+      <% if post.body %>
+        <p class="card-text"><%= post.body %></p>
+      <% end %>
+      <%= link_to "Read more", post, class: "card-link" %>
+  </div>
+<% end %>

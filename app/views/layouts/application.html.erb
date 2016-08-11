@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Firehose</title>
+    <title>Bourn</title>
     <%= csrf_meta_tags %>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
@@ -16,9 +16,11 @@
 
   <body>
     <nav class="navbar navbar-light bg-faded">
-      <a class="navbar-brand" href="/">Firehose</a>
+      <a class="navbar-brand" href="/">Bourn</a>
       <ul class="nav navbar-nav">
-        <li class="nav-item"><%#= link_to "Create", new_post_path, class: "nav-link" %></li>
+        <% if is_signed_in %>
+          <li class="nav-item"><%= link_to "Create", new_post_path, class: "nav-link" %></li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav pull-xs-right">
         <% if is_signed_in %>

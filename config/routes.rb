@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: redirect("/posts")
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
   resources :posts, except: [:destroy]
 
   get "/signin", to: "sessions#new"

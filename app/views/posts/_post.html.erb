@@ -1,0 +1,11 @@
+<div class="list-group-item">
+  <p class="list-group-item-text"><%= post.title %></p>
+  <p class="list-group-item-text">
+    <small class="text-muted">
+      <%= link_to post.user.name, post.user %>
+      <%= post.created_at.to_formatted_s(:short) %>
+      <%= link_to "Read more", post %>
+    </small>
+  </p>
+</div>
+

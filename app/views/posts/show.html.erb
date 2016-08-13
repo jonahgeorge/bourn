@@ -1,5 +1,6 @@
-<h2><%= @post.title %></h2>
+<h2><%= @post.title_without_tags %></h2>
 
+<p class="text-muted"><%= raw @post.tags_html %></p>
 <p class="text-muted"><%= @post.created_at.to_formatted_s(:short) %></p>
 
 <%= markdown(@post.body) %>

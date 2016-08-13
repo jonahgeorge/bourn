@@ -13,8 +13,17 @@ class Post < ApplicationRecord
     title.scan(tag_regex).flatten
   end
 
+  def tags_html
+    categories = %w(default primary success info warning danger)
+    tags
+      .map { |tag|
+        classname = categories[tag.hash % 6]
+        "<span class='tag tag-#{classname}'>#{tag}</span>"
+      }
+      .inject("", :+)
+  end
+
   def composite_title
-    html_tags = tags.map { |t| "<span class='tag tag-primary'>#{t}</span>" }.inject("", :+)
-    title_without_tags + "&nbsp;" + html_tags
+    title_without_tags + "&nbsp;" + tags_html
   end
 end

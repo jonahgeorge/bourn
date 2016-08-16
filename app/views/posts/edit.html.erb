@@ -1,0 +1,5 @@
+<h3>Edit Post</h3>
+
+<%= render "form" %>
+
+<%= button_to "Delete post", @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"  %>

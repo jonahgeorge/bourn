@@ -1,0 +1,11 @@
+<h2><%= @post.title_without_tags %></h2>
+
+<p class="text-muted"><%= raw @post.tags_html %></p>
+<p class="text-muted"><%= @post.created_at.to_formatted_s(:short) %></p>
+
+<%= markdown(@post.body) %>
+
+<% if policy(@post).update? %>
+  <%= link_to "Edit post", edit_post_path(@post), class: "btn btn-primary" %>
+<% end %>
+

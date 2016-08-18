@@ -1,16 +1,12 @@
 class Post < ApplicationRecord
   belongs_to :user
 
-  def tag_regex
-    /\[(.*?)\]/
+  def tags_list
+    self[:tags].join(", ")
   end
 
-  def title_without_tags
-    title.gsub(tag_regex, '').strip
-  end
-
-  def tags
-    title.scan(tag_regex).flatten
+  def tags_list=(names)
+    self[:tags] = names.split(",").map(&:strip)
   end
 
   def tags_html
@@ -20,10 +16,6 @@ class Post < ApplicationRecord
         classname = categories[tag.hash % 6]
         "<span class='tag tag-#{classname}'>#{tag}</span>"
       }
-      .inject("", :+)
-  end
-
-  def composite_title
-    title_without_tags + "&nbsp;" + tags_html
+      .join(" ")
   end
 end

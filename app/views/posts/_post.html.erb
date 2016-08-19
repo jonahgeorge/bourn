@@ -1,14 +1,19 @@
-<div class="list-group-item">
-  <p class="list-group-item-text">
-    <%= post.title %>
-    <%= raw post.tags_html %>
-  </p>
-  <p class="list-group-item-text">
-    <small class="text-muted">
+<div class="media">
+  <div class="media-left">
+    <%= link_to post.user do %>
+      <img class="media-object" src="<%= avatar_url post.user %>" alt="Generic placeholder image">
+    <% end %>
+  </div>
+  <div class="media-body">
+    <h6 class="media-heading">
       <%= link_to post.user.name, post.user %>
-      <%= post.created_at.to_formatted_s(:short) %>
-      <%= link_to "Read more", post %>
-    </small>
-  </p>
+      <small class="text-muted">
+        <%= post.created_at.to_formatted_s(:short) %>
+      </small>
+    </h6>
+    <%= simple_format(truncate(post.body, length: 280, separator: ' ') {
+        content_tag(:span, "(continued)", class: "text-muted")
+      }, {class: "media-text"}, wrapper_tag: "p") %>
+    <%= link_to "view", post %>
+  </div>
 </div>
-

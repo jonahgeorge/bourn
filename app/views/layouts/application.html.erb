@@ -47,8 +47,18 @@
     </nav>
 
     <div class="container-fluid">
-      <p id="alert"><%= alert %></p>
-      <p id="notice"><%= notice %></p>
+      <% if alert %>
+      <div class="alert alert-warning" role="alert">
+        <%= alert %>
+      </div>
+      <% end %>
+
+      <% if notice %>
+      <div class="alert alert-info" role="alert">
+          <%= notice %>
+      </div>
+      <% end %>
+
       <%= yield %>
     </div>
 

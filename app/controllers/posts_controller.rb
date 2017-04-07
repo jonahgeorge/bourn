@@ -46,6 +46,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :created_at, :tags_list)
+    params.require(:post).permit(:body)
   end
 end

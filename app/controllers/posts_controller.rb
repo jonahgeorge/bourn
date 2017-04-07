@@ -22,11 +22,13 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = authorize Post.find(params[:id])
+    @post = Post.find(params[:id])
+    authorize @post
   end
 
   def update
-    @post = authorize Post.find(params[:id])
+    @post = Post.find(params[:id])
+    authorize @post
     if @post.update(post_params)
       redirect_to @post, notice: "Succesfully updated post."
     else
@@ -35,7 +37,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = authorize Post.find(params[:id])
+    @post = Post.find(params[:id])
+    authorize @post
     if @post.destroy
       redirect_to posts_path, notice: "Successfully deleted post."
     else

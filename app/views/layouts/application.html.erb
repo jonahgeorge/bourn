@@ -8,26 +8,40 @@
     <title>Bourn</title>
     <%= csrf_meta_tags %>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" crossorigin="anonymous">
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-    <nav class="navbar navbar-light bg-faded">
-      <a class="navbar-brand" href="/">Bourn</a>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <a class="navbar-brand" href="/">
+        <%= image_tag "logo.png", width: 28, height: 28, class: "d-inline-block align-top" %>
+        Bourn
+      </a>
       <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <%= link_to "Search", posts_path, class: "nav-link" %>
+        </li>
         <% if is_signed_in %>
-          <li class="nav-item"><%= link_to "Create", new_post_path, class: "nav-link" %></li>
+          <li class="nav-item">
+            <%= link_to "Create", new_post_path, class: "nav-link" %>
+          </li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav pull-xs-right">
         <% if is_signed_in %>
-          <li class="nav-item"><%= link_to "Sign out", signout_path, class: "nav-link" %></li>
+          <li class="nav-item">
+            <%= link_to "Sign out", signout_path, class: "nav-link" %>
+          </li>
         <% else %>
-          <li class="nav-item"><%= link_to "Sign up", new_user_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "Sign in", signin_path, class: "nav-link" %></li>
+          <li class="nav-item">
+            <%= link_to "Sign up", new_user_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign in", signin_path, class: "nav-link" %>
+          </li>
         <% end %>
       </ul>
     </nav>

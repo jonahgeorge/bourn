@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-      render "new"
+      render :new
     end
   end
 
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to @post, notice: "Succesfully updated post."
     else
-      render "edit"
+      render :edit
     end
   end
 
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     if @post.destroy
       redirect_to posts_path, notice: "Successfully deleted post."
     else
-      render "edit"
+      render :edit
     end
   end
 

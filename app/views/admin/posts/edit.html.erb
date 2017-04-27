@@ -1,0 +1,14 @@
+<h3>Edit Post</h3>
+
+<%= form_for @post do |f| %>
+  <dl>
+    <dt>Body</dt>
+    <dd><%= @post.body %></dd>
+
+    <dt>Author</dt>
+    <dd><%= @post.user.name %></dd>
+  </dl>
+<% end %>
+
+<%= button_to "Ban Post", @post, method: :delete,
+  data: { confirm: "Are you sure?" }, class: "btn btn-danger"  %>

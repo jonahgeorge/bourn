@@ -1,0 +1,14 @@
+<h3>Edit User</h3>
+
+<%= form_for @user do |f| %>
+<dl>
+  <dt>Name</dt>
+  <dd><%= @user.name %></dd>
+
+  <dt>Email</dt>
+  <dd><%= @user.email %></dd>
+</dl>
+<% end %>
+
+<%= button_to "Ban User", @user, method: :delete,
+  data: { confirm: "Are you sure?" }, class: "btn btn-danger"  %>

@@ -1,0 +1,34 @@
+<div class="media">
+  <%= link_to @post.user do %>
+    <img class="d-flex mr-3 media-object rounded" src="<%= avatar_url @post.user %>">
+  <% end %>
+
+  <div class="media-body">
+
+    <h6 class="mt-0">
+      <%= link_to @post.user.name, @post.user %>
+      <small class="text-muted">
+        <%= @post.created_at.to_formatted_s(:short) %>
+      </small>
+    </h6>
+
+    <%= simple_format @post.body, {class: "media-text"}, wrapper_tag: "p" %>
+
+    <!--
+    <% if policy(@post).update? %>
+      <%= link_to "edit", edit_post_path(@post) %>
+    <% end %>
+    -->
+
+    <% if current_user %>
+      <%= render "child_post_form" %>
+    <% end %>
+
+    <ul class="list-unstyled">
+      <% @post.children.each do |post| %>
+        <%= render "posts/short_post", { post: post } %>
+      <% end %>
+    </ul>
+
+  </div>
+</div>

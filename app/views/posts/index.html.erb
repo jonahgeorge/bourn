@@ -1,7 +1,11 @@
-<div class="col-sm-8 offset-sm-2">
-  <h2>Explore</h2>
+<h2>News Feed</h2>
 
+<% if is_signed_in %>
+  <%= render "parent_post_form" %>
+<% end %>
+
+<ul class="list-unstyled">
   <% @posts.each do |post| %>
-    <%= render "posts/post", { post: post } %>
+    <%= render "posts/short_post", { post: post } %>
   <% end %>
-</div>
+</ul>

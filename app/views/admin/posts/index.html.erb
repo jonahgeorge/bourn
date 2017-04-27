@@ -1,0 +1,29 @@
+<h2>Posts</h2>
+
+<table class="table">
+  <thead>
+    <th>Id</th>
+    <th>Parent</th>
+    <th>Body</th>
+    <th>Author</th>
+    <th>Is Visible</th>
+    <th>Created At</th>
+    <th>Updated At</th>
+  </thead>
+  <tbody>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.id %></td>
+      <td><%= post.parent_post_id || "None" %></td>
+      <td><%= post.body %></td>
+      <td><%= post.user.name %></td>
+      <td><%= post.is_visible %></td>
+      <td><%= post.created_at %></td>
+      <td><%= post.updated_at %></td>
+      <td>
+        <%= link_to "Edit", edit_admin_post_path(post), class: "btn btn-sm btn-primary" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

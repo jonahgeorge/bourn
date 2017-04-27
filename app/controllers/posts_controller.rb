@@ -1,23 +1,35 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post
+      .is_visible
+      .is_root_post
+      .order(created_at: :desc)
+
+    @post = Post.new
   end
 
   def show
     @post = Post.find(params[:id])
-  end
-
-  def new
-    @post = Post.new
+    @new_child_post = Post.new
   end
 
   def create
-    @post = current_user.posts.build(post_params)
-
-    if @post.save
-      redirect_to posts_path
+    if params[:post_id]
+      @post = Post.find(params[:post_id])
+      @new_child_post = current_user.posts.build(post_params)
+      @new_child_post.parent_post_id = @post.id
+      if @new_child_post.save
+        redirect_to post_path(params[:post_id])
+      else
+        render :show
+      end
     else
-      render :new
+      @post = current_user.posts.build(post_params)
+      if @post.save
+        redirect_to posts_path
+      else
+        render :new
+      end
     end
   end
 
@@ -46,7 +58,7 @@ class PostsController < ApplicationController
     end
   end
 
-  private
+private
 
   def post_params
     params.require(:post).permit(:body)

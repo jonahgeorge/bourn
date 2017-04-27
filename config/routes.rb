@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
   root to: redirect("/posts")
-  resources :users, only: [:new, :create, :show]
-  resources :posts
 
-  get "/signin", to: "sessions#new"
-  post "/signin", to: "sessions#create"
-  get "/signout", to: "sessions#destroy"
+  resource :registration, only: [:new, :create]
+  resource :session, only: [:new, :create, :destroy]
+  resource :subscription, only: [:new, :create]
+
+  resources :users, only: [:show]
+  resources :posts, except: [:new] do
+    resources :posts, only: [:create]
+  end
+
+  namespace :admin do
+    resources :users
+    resources :posts
+  end
 end

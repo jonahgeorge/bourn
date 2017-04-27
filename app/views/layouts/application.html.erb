@@ -46,7 +46,7 @@
               </li>
             <% end %>
             <li class="nav-item">
-              <%= link_to "Sign out", session_path, method: :delete, class: "nav-link" %>
+              <%= button_to "Sign out", session_path, method: :delete, class: "nav-link" %>
             </li>
           <% else %>
             <li class="nav-item">
@@ -64,7 +64,7 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-8 offset-sm-2">
+        <div class="col-lg-8 offset-lg-2">
 
         <% if alert %>
         <div class="alert alert-warning" role="alert">

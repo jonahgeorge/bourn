@@ -1,16 +1,18 @@
-<%= link_to post, class: "media" do %>
-  <img class="d-flex mr-3 media-object rounded" src="<%= avatar_url post.user %>">
+<%= link_to post, class: "list-group-item list-group-item-action" do %>
+  <div class="media">
+    <img class="d-flex mr-3 media-object rounded" src="<%= avatar_url post.user %>">
 
-  <div class="media-body">
-    <h6 class="mt-0">
-      <%= post.user.name %>
-      <small class="text-muted">
-        <%= post.created_at.to_formatted_s(:short) %>
-      </small>
-    </h6>
+    <div class="media-body">
+      <h6 class="mt-0">
+        <%= post.user.name %>
+        <small class="text-muted">
+          <%= post.created_at.to_formatted_s(:short) %>
+        </small>
+      </h6>
 
-    <%= simple_format(truncate(post.body, length: 280, separator: ' ') {
-        content_tag(:span, "(continued)", class: "text-muted")
-      }, {class: "media-text"}, wrapper_tag: "p") %>
+      <%= simple_format(truncate(post.body, length: 280, separator: ' ') {
+          content_tag(:span, "(continued)", class: "text-muted")
+        }, {class: "media-text"}, wrapper_tag: "span") %>
+    </div>
   </div>
 <% end %>

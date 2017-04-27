@@ -4,8 +4,8 @@
   <%= render "parent_post_form" %>
 <% end %>
 
-<ul class="list-unstyled">
+<div class="list-group">
   <% @posts.each do |post| %>
     <%= render "posts/short_post", { post: post } %>
   <% end %>
-</ul>
+</div>

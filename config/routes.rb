@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: redirect("/posts")
+  root to: "home#index"
 
   resource :registration, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]

@@ -23,10 +23,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <a class="navbar-brand" href="#">
+      <%= link_to admin_root_path, class: "navbar-brand" do %>
         <%= image_tag "logo.png", width: 28, height: 28, class: "d-inline-block align-top" %>
         Bourn
-      </a>
+      <% end %>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -52,19 +52,23 @@
     <br/>
 
     <div class="container-fluid">
-      <% if alert %>
-      <div class="alert alert-warning" role="alert">
-        <%= alert %>
-      </div>
-      <% end %>
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <% if alert %>
+          <div class="alert alert-warning" role="alert">
+            <%= alert %>
+          </div>
+          <% end %>
 
-      <% if notice %>
-      <div class="alert alert-info" role="alert">
-          <%= notice %>
-      </div>
-      <% end %>
+          <% if notice %>
+          <div class="alert alert-info" role="alert">
+              <%= notice %>
+          </div>
+          <% end %>
 
-      <%= yield %>
+          <%= yield %>
+        </div>
+      </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>

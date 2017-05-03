@@ -1,4 +1,25 @@
-<h2><%= @user.name %></h2>
+<div class="row mb-4">
+  <div class="col-2">
+    <img class="rounded img-fluid" src="<%= avatar_url @user %>">
+  </div>
+
+  <div class="col-10">
+    <h2><%= @user.name %></h2>
+    <p><%= @user.bio || "Nothing here for now 😔" %></p>
+
+    <% if @user.location %>
+      <%= octicon "globe" %>
+      <%= @user.location %>
+    <% end %>
+
+    <% if @user.url %>
+      <%= link_to @user.url do %>
+        <%= octicon "pin" %>
+        <%= @user.url %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
 <% @posts.each do |post| %>
   <%= render "posts/short_post", { post: post } %>

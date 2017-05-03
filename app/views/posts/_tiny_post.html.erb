@@ -1,0 +1,11 @@
+<!-- <%= link_to post, class: "list-group-item list-group-item-action" do %> -->
+  <div class="media mt-2">
+    <img class="d-flex mr-3 media-object rounded" src="<%= avatar_url post.user %>" width=32>
+
+    <div class="media-body">
+      <%= highlight(simple_format(truncate(post.body, length: 80, separator: ' ') {
+          content_tag(:span, "(continued)", class: "text-muted")
+        }, {class: "media-text"}, wrapper_tag: "span"), Post.tag_regex) %>
+    </div>
+  </div>
+<!-- <% end %> -->

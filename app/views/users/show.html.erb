@@ -1,6 +1,6 @@
 <div class="row mb-4">
   <div class="col-2">
-    <img class="rounded img-fluid" src="<%= avatar_url @user %>">
+    <img class="rounded img-fluid" src="<%= avatar_url @user %>" width=128>
   </div>
 
   <div class="col-10">
@@ -20,6 +20,8 @@
     <% end %>
   </div>
 </div>
+
+<hr/>
 
 <% @posts.each do |post| %>
   <%= render "posts/short_post", { post: post } %>

@@ -1,6 +1,14 @@
 <h1>Sign up</h1>
 
-<%= form_for @user, url: url_for(controller: 'registrations', action: 'create') do |f| %>
+<%= form_for @user, url: url_for(controller: 'registrations', action: 'create'), method: :post do |f| %>
+
+  <% if @user.errors.any? %>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
 
   <div class="form-group">
     <%= f.label :name %>
@@ -15,6 +23,10 @@
   <div class="form-group">
     <%= f.label :password %>
     <%= f.password_field :password, required: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= recaptcha_tags %>
   </div>
 
   <div class="form-group">

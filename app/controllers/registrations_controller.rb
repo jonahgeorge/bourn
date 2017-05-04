@@ -6,7 +6,7 @@ class RegistrationsController < ApplicationController
   def create
     @user = User.create(user_params)
 
-    if @user.save
+    if verify_recaptcha(model: @user) && @user.save
       session[:user_id] = @user.id
       redirect_to new_subscription_path
     else

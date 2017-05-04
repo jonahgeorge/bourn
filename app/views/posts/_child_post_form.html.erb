@@ -1,4 +1,6 @@
-<%= form_for [@post, @new_child_post] do |f| %>
+<%= form_for [@post, @new_post] do |f| %>
+  <%= f.hidden_field :parent_post_id %>
+
   <div class="form-group">
     <%= f.text_area :body, class: "form-control", rows: 3 %>
   </div>

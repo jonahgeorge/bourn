@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @posts = Post
-      .is_visible
+      .visible_to(current_user)
       .is_root_post
       .order(created_at: :desc)
 
@@ -9,37 +9,35 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    @new_child_post = Post.new
+    @post = Post.visible_to(current_user).find(params[:id])
+    @new_post = Post.new(parent_post_id: @post.id)
   end
 
   def create
-    if params[:post_id]
-      @post = Post.find(params[:post_id])
-      @new_child_post = current_user.posts.build(post_params)
-      @new_child_post.parent_post_id = @post.id
-      if @new_child_post.save
-        redirect_to post_path(params[:post_id])
+    @new_post = current_user.posts.build(post_params)
+
+    if Akismet.spam?(request.ip, request.user_agent, text: params[:post][:body])
+      @new_post.is_visible = false
+    end
+
+    if @new_post.save
+      if params[:post][:parent_post_id]
+        redirect_to post_path(params[:post][:parent_post_id])
       else
-        render :show
+        redirect_to @new_post
       end
     else
-      @post = current_user.posts.build(post_params)
-      if @post.save
-        redirect_to posts_path
-      else
-        render :new
-      end
+      render :show
     end
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.visible_to(current_user).find(params[:id])
     authorize @post, :edit?
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Post.visible_to(current_user).find(params[:id])
     authorize @post, :update?
     if @post.update(post_params)
       redirect_to @post, notice: "Succesfully updated post."
@@ -49,7 +47,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = Post.visible_to(current_user).find(params[:id])
     authorize @post, :destroy?
     if @post.destroy
       redirect_to posts_path, notice: "Successfully deleted post."
@@ -61,6 +59,6 @@ class PostsController < ApplicationController
 private
 
   def post_params
-    params.require(:post).permit(:body)
+    params.require(:post).permit(:parent_post_id, :body)
   end
 end

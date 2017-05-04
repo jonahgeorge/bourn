@@ -17,7 +17,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
       <button
         class="navbar-toggler navbar-toggler-right" type="button"
         data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation"
@@ -83,6 +83,18 @@
         </div>
       </div>
     </div>
+
+    <footer class="bd-footer text-muted">
+      <div class="container">
+        <ul class="bd-footer-links">
+          <li><a target="_blank" href="https://github.com/jonahgeorge/bourn">GitHub</a></li>
+          <li><%= link_to "Contact", new_contact_path %></li>
+          <li><%= link_to "About", about_path %></li>
+          <li><%= link_to "Policies", policies_path %></li>
+        </ul>
+        <p>Designed and built by <a href="https://twitter.com/jonahgeorge" target="_blank">@jonahgeorge</a>.</p>
+      </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>

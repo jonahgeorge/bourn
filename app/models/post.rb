@@ -6,7 +6,8 @@ class Post < ApplicationRecord
   end
 
   belongs_to :user
-  has_many :children, class_name: "Post", primary_key: "id", foreign_key: "parent_post_id"
+  has_many :children, class_name: "Post", foreign_key: :parent_post_id
+  has_one :parent, class_name: "Post", foreign_key: :parent_post_id
 
   pg_search_scope :search_for, against: :body
 

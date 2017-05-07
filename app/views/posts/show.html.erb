@@ -1,6 +1,12 @@
+<% if @post.parent %>
+  <%= render "posts/post", { post: @post.parent } %>
+  <hr/>
+  <br/>
+<% end %>
+
 <div class="media">
   <%= link_to @post.user do %>
-    <img class="d-flex mr-3 media-object rounded" src="<%= avatar_url @post.user %>" width=64>
+    <img class="d-flex mr-3 media-object rounded" src="<%= avatar_url @post.user %>" width=48>
   <% end %>
 
   <div class="media-body">
@@ -22,7 +28,9 @@
 </div>
 
 <% if current_user %>
-  <%= render "child_post_form" %>
+  <div class="mt-2">
+    <%= render "child_post_form" %>
+  </div>
 <% end %>
 
 <ul class="list-unstyled">

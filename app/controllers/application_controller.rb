@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   include Pundit
+
   # protect_from_forgery with: :exception
+
+  before_filter :require_email_confirmation
+  before_filter :require_subscription
+
   helper_method :current_user, :is_signed_in
 
   def current_user
@@ -19,8 +24,20 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def user_not_authorized
-    flash[:alert] = "You are not authorized to perform this action."
-    redirect_to(request.referrer || root_path)
-  end
+    def require_subscription
+      # TODO
+    end
+
+    def require_email_confirmation
+      if is_signed_in
+        if current_user.is_email_confirmed == false
+          redirect_to new_confirmation_path
+        end
+      end
+    end
+
+    def user_not_authorized
+      flash[:alert] = "You are not authorized to perform this action."
+      redirect_to(request.referrer || root_path)
+    end
 end

@@ -5,18 +5,21 @@ class RegistrationsController < ApplicationController
 
   def create
     @user = User.create(user_params)
+    @user.email_confirmation_token = SecureRandom.urlsafe_base64.to_s
 
     if verify_recaptcha(model: @user) && @user.save
-      session[:user_id] = @user.id
-      redirect_to new_subscription_path
+      EmailConfirmationMailer.new_message(@user).deliver
+
+      flash[:notice] = "Please confirm your email address before logging in."
+      redirect_to new_session_path
     else
       render :new
     end
   end
 
-private
+  private
 
-  def user_params
-    params.require(:user).permit(:name, :email, :password)
-  end
+    def user_params
+      params.require(:user).permit(:name, :email, :password)
+    end
 end

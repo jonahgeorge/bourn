@@ -13,6 +13,7 @@ gem 'stripe'
 gem 'octicons_helper'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'akismet'
+gem 'pg_search'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'

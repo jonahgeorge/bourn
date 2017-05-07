@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  include PgSearch
 
   before_save do
     self.tags = self.body.scan(Post.tag_regex).flatten
@@ -6,6 +7,8 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_many :children, class_name: "Post", primary_key: "id", foreign_key: "parent_post_id"
+
+  pg_search_scope :search_for, against: :body
 
   def self.tag_regex
     /\#(\S+)/

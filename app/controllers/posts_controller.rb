@@ -1,9 +1,8 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post
-      .visible_to(current_user)
-      .is_root_post
-      .order(created_at: :desc)
+    @posts = Post.visible_to(current_user).is_root_post
+    @posts = @posts.search_for(params[:q]) if params[:q]
+    @posts = @posts.order(created_at: :desc)
 
     @post = Post.new
   end

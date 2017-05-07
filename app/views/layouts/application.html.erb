@@ -30,11 +30,9 @@
         Bourn
       <% end %>
 
-      <!--
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <form class="form-inline my-2 my-lg-0" action="/posts" method="GET">
+        <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search" value="<%= params[:q] %>">
       </form>
-      -->
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">

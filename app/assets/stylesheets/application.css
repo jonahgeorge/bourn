@@ -14,50 +14,42 @@
  *= require_self
  */
 
- /*!
-  * Bootstrap Docs (https://getbootstrap.com)
-  * Copyright 2011-2017 The Bootstrap Authors
-  * Copyright 2011-2017 Twitter, Inc.
-  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
-  * details, see https://creativecommons.org/licenses/by/3.0/.
-  */
+.bd-footer {
+  padding: 4rem 0;
+  margin-top: 4rem;
+  font-size: 85%;
+  text-align: center;
+  background-color: #f7f7f7
+}
 
- .bd-footer {
-     padding: 4rem 0;
-     margin-top: 4rem;
-     font-size: 85%;
-     text-align: center;
-     background-color: #f7f7f7
- }
+.bd-footer a {
+  font-weight: 500;
+  color: #464a4c
+}
 
- .bd-footer a {
-     font-weight: 500;
-     color: #464a4c
- }
+.bd-footer a:hover {
+  color: #0275d8
+}
 
- .bd-footer a:hover {
-     color: #0275d8
- }
+.bd-footer p {
+  margin-bottom: 0
+}
 
- .bd-footer p {
-     margin-bottom: 0
- }
+@media (min-width:576px) {
+  .bd-footer {
+    text-align: left
+  }
+}
 
- @media (min-width:576px) {
-     .bd-footer {
-         text-align: left
-     }
- }
+.bd-footer-links {
+  padding-left: 0;
+  margin-bottom: 1rem
+}
 
- .bd-footer-links {
-     padding-left: 0;
-     margin-bottom: 1rem
- }
+.bd-footer-links li {
+  display: inline-block
+}
 
- .bd-footer-links li {
-     display: inline-block
- }
-
- .bd-footer-links li + li {
-     margin-left: 1rem
- }
+.bd-footer-links li + li {
+  margin-left: 1rem
+}

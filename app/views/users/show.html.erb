@@ -8,16 +8,20 @@
     <p><%= @user.bio || "Nothing here for now 😔" %></p>
 
     <% if @user.location %>
-      <%= octicon "globe" %>
+      <%= octicon "globe", class: "mr-1" %>
       <%= @user.location %>
+      <br>
     <% end %>
 
     <% if @user.url %>
-      <%= link_to @user.url do %>
-        <%= octicon "pin" %>
+      <%= link_to @user.url, target: "_blank" do %>
+        <%= octicon "pin", class: "mr-1" %>
         <%= @user.url %>
       <% end %>
     <% end %>
+
+    <br/>
+    <%= link_to "Edit Profile", edit_user_path(@user) %>
   </div>
 </div>
 

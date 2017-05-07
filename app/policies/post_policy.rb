@@ -6,6 +6,10 @@ class PostPolicy < ApplicationPolicy
     @post = post
   end
 
+  def edit?
+    @post.user == @user
+  end
+
   def update?
     @post.user == @user
   end

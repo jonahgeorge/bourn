@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resource :subscription, only: [:new, :create]
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
   resources :posts, except: [:new] do
     resources :posts, only: [:create]
   end

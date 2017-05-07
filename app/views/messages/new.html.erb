@@ -1,6 +1,17 @@
 <h1>Contact Us</h1>
 
 <%= form_for @message do |f| %>
+  <% if @message.errors.any? %>
+  <div class='alert alert-danger'>
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <ul class="mb-0">
+      <% @message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
   <fieldset>
   <div class='form-group'>
     <%= f.label :name %>
@@ -24,6 +35,10 @@
   <div class='form-group'>
     <%= f.label :content %>
     <%= f.text_area :content, class: 'form-control', required: true  %>
+  </div>
+
+  <div class="form-group">
+    <%= recaptcha_tags %>
   </div>
   </fieldset>
 

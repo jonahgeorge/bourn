@@ -10,11 +10,10 @@ class MessagesController < ApplicationController
     @message.name = current_user.name if is_signed_in
     @message.email = current_user.email if is_signed_in
 
-    if @message.valid?
+    if verify_recaptcha(model: @message) && @message.valid?
       MessageMailer.new_message(@message).deliver
       redirect_to new_messages_path, notice: "Your message has been sent."
     else
-      flash[:alert] = "An error occurred while delivering this message."
       render :new
     end
   end

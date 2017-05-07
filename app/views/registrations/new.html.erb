@@ -1,13 +1,15 @@
 <h1>Sign up</h1>
 
 <%= form_for @user, url: url_for(controller: 'registrations', action: 'create'), method: :post do |f| %>
-
   <% if @user.errors.any? %>
-  <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+  <div class='alert alert-danger'>
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <ul class="mb-0">
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
   <% end %>
 
   <div class="form-group">

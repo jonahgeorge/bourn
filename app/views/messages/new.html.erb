@@ -1,6 +1,7 @@
 <h1>Contact Us</h1>
 
 <%= form_for @message do |f| %>
+  <fieldset>
   <div class='form-group'>
     <%= f.label :name %>
 
@@ -24,8 +25,9 @@
     <%= f.label :content %>
     <%= f.text_area :content, class: 'form-control', required: true  %>
   </div>
+  </fieldset>
 
-  <div class='form-group'>
+  <fieldset class='form-group'>
     <%= f.submit nil, class: 'btn btn-primary' %>
-  </div>
+  </fieldset>
 <% end %>

@@ -1,4 +1,4 @@
-class Message
+class ContactForm
   include ActiveModel::Model
   include ActiveModel::Conversion
   include ActiveModel::Validations

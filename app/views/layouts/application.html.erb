@@ -30,22 +30,23 @@
         Bourn
       <% end %>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <% if is_signed_in %>
-          <li class="nav-item">
-            <%= link_to "Profile", current_user, class: "nav-link" %>
-          </li>
-          <% end %>
-        </ul>
+      <!--
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      </form>
+      -->
 
-        <ul class="navbar-nav">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
           <% if is_signed_in %>
             <% if current_user.role == "admin" %>
               <li class="nav-item">
                 <%= link_to "Admin Site", admin_users_path, class: "nav-link" %>
               </li>
             <% end %>
+            <li class="nav-item">
+              <%= link_to "Profile", current_user, class: "nav-link" %>
+            </li>
             <li class="nav-item">
               <%= link_to "Sign out", session_path, method: :delete, class: "nav-link" %>
             </li>

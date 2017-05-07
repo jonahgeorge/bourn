@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "/about", to: "pages#about"
   get "/policies", to: "pages#policies"
 
-  resource :contact, only: [:new, :create]
+  resource :messages, only: [:new, :create]
   resource :registration, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
   resource :subscription, only: [:new, :create]

@@ -62,7 +62,7 @@
 
     <br/>
 
-    <div class="container-fluid">
+    <main class="container-fluid">
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
 
@@ -81,13 +81,13 @@
         <%= yield %>
         </div>
       </div>
-    </div>
+    </main>
 
     <footer class="bd-footer text-muted">
       <div class="container">
         <ul class="bd-footer-links">
           <li><a target="_blank" href="https://github.com/jonahgeorge/bourn">GitHub</a></li>
-          <li><%= link_to "Contact", new_contact_path %></li>
+          <li><%= link_to "Contact", new_messages_path %></li>
           <li><%= link_to "About", about_path %></li>
           <li><%= link_to "Policies", policies_path %></li>
         </ul>

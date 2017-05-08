@@ -15,6 +15,7 @@ gem 'recaptcha', require: 'recaptcha/rails'
 gem 'akismet'
 gem 'pg_search'
 gem 'mailgun-ruby', '~>1.1.4'
+gem 'chartkick'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'

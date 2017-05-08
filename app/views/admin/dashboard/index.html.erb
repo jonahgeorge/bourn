@@ -1,3 +1,9 @@
 <h2>Dashboard</h2>
 
-<p>Insert usage graphs here</p>
+<label>Traffic Over the Past Day (by hour)</label>
+<%= line_chart "#{ENV["WEATHERGLASS_HOST"]}/sites/#{ENV["WEATHERGLASS_SITE_ID"]}/reports/visits_over_time?interval=hour&range=day" %>
+
+<br/>
+
+<label>Traffic Over the Past Month (by day)</label>
+<%= line_chart "#{ENV["WEATHERGLASS_HOST"]}/sites/#{ENV["WEATHERGLASS_SITE_ID"]}/reports/visits_over_time?interval=day&range=month" %>

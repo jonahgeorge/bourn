@@ -18,6 +18,7 @@
 
   <body>
     <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+
       <button
         class="navbar-toggler navbar-toggler-right" type="button"
         data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation"
@@ -31,7 +32,7 @@
       <% end %>
 
       <form class="form-inline my-2 my-lg-0" action="/posts" method="GET">
-        <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search" value="<%= params[:q] %>">
+        <input name="q" class="form-control" type="text" placeholder="Search" value="<%= params[:q] %>">
       </form>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -84,7 +85,7 @@
     </main>
 
     <footer class="bd-footer text-muted">
-      <div class="container">
+    <div class="container">
         <ul class="bd-footer-links">
           <li><a target="_blank" href="https://github.com/jonahgeorge/bourn">GitHub</a></li>
           <li><%= link_to "Contact", new_messages_path %></li>
@@ -92,7 +93,7 @@
           <li><%= link_to "Policies", policies_path %></li>
         </ul>
         <p>Designed and built by <a href="https://twitter.com/jonahgeorge" target="_blank">@jonahgeorge</a>.</p>
-      </div>
+    </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>

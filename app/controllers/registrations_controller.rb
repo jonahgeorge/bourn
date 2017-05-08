@@ -7,6 +7,11 @@ class RegistrationsController < ApplicationController
     @user = User.create(user_params)
     @user.email_confirmation_token = SecureRandom.urlsafe_base64.to_s
 
+    if @user.valid?
+      customer = Stripe::Customer.create(email: params[:user][:email])
+      @user.stripe_id = customer.id
+    end
+
     if verify_recaptcha(model: @user) && @user.save
       EmailConfirmationMailer.new_message(@user).deliver
 

@@ -25,7 +25,12 @@ class ApplicationController < ActionController::Base
   private
 
     def require_subscription
-      # TODO
+      # if is_signed_in
+      #   customer = Stripe::Customer.retrieve(current_user.stripe_id)
+      #   unless customer.subscriptions.data.length > 0
+      #     redirect_to new_subscription_path
+      #   end
+      # end
     end
 
     def require_email_confirmation

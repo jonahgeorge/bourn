@@ -3,6 +3,14 @@ class ConfirmationsController < ApplicationController
 
   def new
     @form = EmailConfirmationForm.new
+
+    if is_signed_in && current_user.email_confirmation_token == nil
+      user = User.find(current_user.id)
+      user.email_confirmation_token = SecureRandom.urlsafe_base64.to_s
+      user.save
+
+      EmailConfirmationMailer.new_message(user).deliver
+    end
   end
 
   def create

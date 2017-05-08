@@ -11,7 +11,7 @@
       </small>
     </h6>
 
-    <%= highlight(
+    <%#= highlight(
           simple_format(
             truncate(post.body, length: 280, separator: ' ') {
               content_tag(:span, "(continued)", class: "text-muted")
@@ -21,6 +21,10 @@
           ),
           params[:q]
     ) %>
+
+    <div class="bourn-post-media">
+    <%= raw post.body %>
+    </div>
 
     <p>
       <%= link_to "view", post, class: "mr-2" %>

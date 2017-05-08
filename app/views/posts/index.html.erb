@@ -1,11 +1,33 @@
-<h2>News Feed</h2>
+<h2 class="mb-4">News Feed</h2>
 
-<% if is_signed_in %>
-  <%= render "parent_post_form" %>
-<% end %>
+<div class='row'>
+  <div class='col-2'>
+    <aside>
+      <h3>Popular Users</h3>
+      <% User.find_each do |user| %>
+        <li><%= link_to user.name, user %></li>
+      <% end %>
+    </aside>
 
-<div class="list-group">
-  <% @posts.each do |post| %>
-    <%= render "posts/post", { post: post } %>
-  <% end %>
+    <br/>
+
+    <aside>
+      <h3>Popular Tags</h3>
+      <% Post.find_each do |post| %>
+        <li><%= link_to post.tags, post %></li>
+      <% end %>
+    </aside>
+  </div>
+
+  <div class='col-10'>
+    <% if is_signed_in %>
+      <%= render "parent_post_form" %>
+    <% end %>
+
+    <div class="list-group">
+      <% @posts.each do |post| %>
+        <%= render "posts/post", { post: post } %>
+      <% end %>
+    </div>
+  </div>
 </div>

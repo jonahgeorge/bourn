@@ -17,7 +17,8 @@
       </small>
     </h6>
 
-    <%= highlight(simple_format(@post.body, {class: "media-text"}, wrapper_tag: "p"), Post.tag_regex) %>
+    <%#= highlight(simple_format(@post.body, {class: "media-text"}, wrapper_tag: "p"), Post.tag_regex) %>
+    <%= raw @post.body %>
 
     <% if policy(@post).update? %>
     <div class="mb-4">

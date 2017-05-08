@@ -1,25 +1,24 @@
 <h2 class="mb-4">News Feed</h2>
 
 <div class='row'>
-  <div class='col-2'>
-    <aside>
-      <h3>Popular Users</h3>
-      <% User.find_each do |user| %>
-        <li><%= link_to user.name, user %></li>
-      <% end %>
-    </aside>
+  <div class='col-3'>
 
-    <br/>
-
-    <aside>
-      <h3>Popular Tags</h3>
-      <% Post.find_each do |post| %>
-        <li><%= link_to post.tags, post %></li>
-      <% end %>
-    </aside>
+    <div class="card">
+      <div class="card-header">
+        Featured Users
+      </div>
+      <div class="list-group list-group-flush">
+        <% User.find_each do |user| %>
+          <%= link_to user, class: "list-group-item" do %>
+            <img src="<%= avatar_url user %>" width=32 class="mr-2" />
+            <%= user.name %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 
-  <div class='col-10'>
+  <div class='col-9'>
     <% if is_signed_in %>
       <%= render "parent_post_form" %>
     <% end %>

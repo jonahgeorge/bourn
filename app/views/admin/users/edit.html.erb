@@ -1,14 +1,27 @@
 <h3>Edit User</h3>
 
-<%= form_for @user do |f| %>
-<dl>
-  <dt>Name</dt>
-  <dd><%= @user.name %></dd>
+<%= form_for [:admin, @user] do |f| %>
+  <%= render "form_errors", { form: @user } %>
 
-  <dt>Email</dt>
-  <dd><%= @user.email %></dd>
-</dl>
+  <div class='form-group'>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'form-control' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :role %>
+    <%= f.select :role, User.roles.keys, {}, class: 'form-control' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.submit nil, class: "btn btn-primary" %>
+  </div>
 <% end %>
 
-<%= button_to "Ban User", @user, method: :delete,
+<%= button_to "Delete User", admin_user_path(@user), method: :delete,
   data: { confirm: "Are you sure?" }, class: "btn btn-danger"  %>

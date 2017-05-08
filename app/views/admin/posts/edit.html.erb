@@ -1,14 +1,23 @@
 <h3>Edit Post</h3>
 
-<%= form_for @post do |f| %>
-  <dl>
-    <dt>Body</dt>
-    <dd><%= @post.body %></dd>
+<%= form_for [:admin, @post] do |f| %>
+  <div class='form-group'>
+    <%= f.label :body %>
+    <%= f.text_area :body, class: 'form-control', rows: 10 %>
+  </div>
 
-    <dt>Author</dt>
-    <dd><%= @post.user.name %></dd>
-  </dl>
+  <div class='form-check'>
+    <label class="form-check-label">
+      <%= f.check_box :is_visible, class: 'form-check-input' %>
+      Is Visible
+    </label>
+  </div>
+
+  <div class='form-group'>
+    <%= f.submit nil, class: 'btn btn-primary' %>
+  </div>
 <% end %>
 
-<%= button_to "Ban Post", @post, method: :delete,
-  data: { confirm: "Are you sure?" }, class: "btn btn-danger"  %>
+<%= button_to "Delete Post", @post, method: :delete,
+  data: { confirm: "Are you sure? This will also delete any comments attached to it." },
+  class: "btn btn-danger"  %>

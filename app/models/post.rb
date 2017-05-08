@@ -11,6 +11,8 @@ class Post < ApplicationRecord
 
   pg_search_scope :search_for, against: :body
 
+  validates :body, length: { minimum: 2 }
+
   def self.tag_regex
     /\#(\S+)/
   end

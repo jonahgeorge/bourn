@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507211130) do
+ActiveRecord::Schema.define(version: 20170508004537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170507211130) do
     t.string   "url"
     t.string   "email_confirmation_token"
     t.boolean  "is_email_confirmed",       default: false
+    t.string   "password_reset_token"
   end
 
 end

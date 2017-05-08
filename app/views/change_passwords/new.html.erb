@@ -1,0 +1,17 @@
+<h2>Change Password</h2>
+
+<%= form_for @form, url: url_for(controller: :change_passwords, action: :create) do |f| %>
+  <div class='form-group'>
+    <%= f.label :old_password %>
+    <%= f.password_field :old_password, class: 'form-control', required: true %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :new_password %>
+    <%= f.password_field :new_password, class: 'form-control', required: true %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -1,0 +1,16 @@
+<h2>Reset Password</h2>
+
+<%= form_for @form, url: url_for(controller: :reset_passwords, action: :create) do |f| %>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, required: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= recaptcha_tags %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,3 @@
+Please navigate to the link below to reset your password:
+
+<%= ENV["APP_HOST"] %>/reset_password/edit?reset_password_token=<%= @user.password_reset_token %>

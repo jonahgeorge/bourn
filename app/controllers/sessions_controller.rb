@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :require_email_confirmation
+  skip_before_action :require_email_confirmation
 
   def new
   end

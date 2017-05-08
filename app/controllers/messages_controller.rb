@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  skip_before_action :require_email_confirmation
+
   def new
     @form = ContactForm.new
     @form.name = current_user.name if is_signed_in

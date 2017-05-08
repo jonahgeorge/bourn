@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
 
   # protect_from_forgery with: :exception
 
-  before_filter :require_email_confirmation
-  before_filter :require_subscription
+  before_action :require_email_confirmation
+  before_action :require_subscription
 
   helper_method :current_user, :is_signed_in
 

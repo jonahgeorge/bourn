@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/about", to: "pages#about"
   get "/policies", to: "pages#policies"
 
+  resource :update_email, only: [:new, :create]
   resource :confirmation, only: [:new, :create, :show]
   resource :messages, only: [:new, :create]
   resource :registration, only: [:new, :create]

@@ -11,7 +11,10 @@ module Bourn
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    config.action_mailer.delivery_method = :postmark
-    config.action_mailer.postmark_settings = { :api_token => ENV["POSTMARK_API_TOKEN"] }
+    config.action_mailer.delivery_method = :mailgun
+     config.action_mailer.mailgun_settings = {
+       api_key: ENV['MAILGUN_API_TOKEN'],
+       domain: ENV['MAILGUN_DOMAIN'],
+     }
   end
 end

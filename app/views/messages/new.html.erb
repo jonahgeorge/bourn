@@ -1,16 +1,7 @@
 <h1>Contact Us</h1>
 
 <%= form_for @form, url: url_for(controller: 'messages', action: 'create') do |f| %>
-  <% if @form.errors.any? %>
-  <div class='alert alert-danger'>
-    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-    <ul class="mb-0">
-      <% @form.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
+  <%= render "form_errors", { form: @form } %>
 
   <fieldset>
   <div class='form-group'>

@@ -20,8 +20,10 @@
       <% end %>
     <% end %>
 
-    <br/>
-    <%= link_to "Edit Profile", edit_user_path(@user) %>
+    <% if policy(@user).update? %>
+      <br/>
+      <%= link_to "Edit Profile", edit_user_path(@user) %>
+    <% end %>
   </div>
 </div>
 

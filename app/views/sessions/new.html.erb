@@ -1,7 +1,6 @@
 <h1>Sign in</h1>
 
 <%= form_tag session_path, method: :post do |f| %>
-
   <div class="form-group">
     <%= label_tag :email %>
     <%= email_field_tag :email, nil, required: true, class: "form-control" %>

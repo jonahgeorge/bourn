@@ -1,5 +1,5 @@
 class ConfirmationsController < ApplicationController
-  skip_before_filter :require_email_confirmation
+  skip_before_action :require_email_confirmation
 
   def new
     @form = EmailConfirmationForm.new
@@ -12,9 +12,13 @@ class ConfirmationsController < ApplicationController
       user = User.find_by(email: @form.email)
       user.email_confirmation_token = SecureRandom.urlsafe_base64.to_s
 
-      EmailConfirmationMailer.new_message(user).deliver
-
-      redirect_to new_confirmation_path, notice: "Please check your email for confirmation instructions."
+      if user.save
+        EmailConfirmationMailer.new_message(user).deliver
+        redirect_to new_confirmation_path, notice: "Please check your email for confirmation instructions."
+      else
+        flash[:alert] = "Something bad happened :("
+        render :new
+      end
     else
       render :new
     end

@@ -2,7 +2,7 @@ module Admin
   class BaseController < ::ApplicationController
     layout "admin"
 
-    before_filter :check_role
+    before_action :check_role
 
     private
 

@@ -14,7 +14,7 @@ gem 'octicons_helper'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'akismet'
 gem 'pg_search'
-gem 'postmark-rails'
+gem 'mailgun-ruby', '~>1.1.4'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
@@ -25,6 +25,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'pry'
 end
 
 group :development do

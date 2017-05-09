@@ -47,7 +47,9 @@
 
 .bd-footer-links {
   padding-left: 0;
-  margin-bottom: 1rem
+  margin-bottom: 1rem;
+  border-top: solid 1px #eee;
+  padding-top: 25px;
 }
 
 .bd-footer-links li {

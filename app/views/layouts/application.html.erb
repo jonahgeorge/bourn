@@ -10,6 +10,7 @@
     <title>Bourn</title>
     <%= csrf_meta_tags %>
 
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', integrity: true %>
     <%= javascript_include_tag 'application', integrity: true %>
   </head>
@@ -26,7 +27,7 @@
 
       <%= link_to root_path, class: "navbar-brand" do %>
         <%= image_tag "logo.svg", width: 28, height: 28, class: "d-inline-block align-top" %>
-        Bourn
+        <span style="font-family: 'Lobster', cursive">Bourn</span>
       <% end %>
 
       <form class="form-inline my-2 my-lg-0" action="/posts" method="GET">

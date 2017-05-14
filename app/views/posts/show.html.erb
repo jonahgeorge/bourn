@@ -1,32 +1,46 @@
-<% if @post.parent %>
-  <%= render "posts/post", { post: @post.parent } %>
-  <hr/>
-  <br/>
-<% end %>
+<div class="card mb-2">
+  <div class='card-block'>
 
-<div class="media">
-  <%= link_to @post.user do %>
-    <img class="d-flex mr-3 media-object rounded" src="<%= avatar_url @post.user %>" width=48>
-  <% end %>
+    <div class="media">
+      <%= link_to @post.user do %>
+        <img class="d-flex mr-3 media-object rounded"
+             src="<%= avatar_url @post.user %>" width=48>
+      <% end %>
 
-  <div class="media-body">
-    <h6>
-      <%= link_to @post.user.name, @post.user %>
-      <small class="text-muted">
-        <%= @post.created_at.to_formatted_s(:short) %>
-      </small>
-    </h6>
+      <div class="media-body">
+          <%= link_to @post.user.name, @post.user %>
+          <p>
+            <small class="text-muted">
+              <%= @post.created_at.to_formatted_s(:short) %>
+            </small>
+          </p>
+      </div>
+    </div>
 
-    <%#= highlight(simple_format(@post.body, {class: "media-text"}, wrapper_tag: "p"), Post.tag_regex) %>
-    <%= raw @post.body %>
+    <%#= highlight(
+              simple_format(
+                @post.body,
+                {class: "media-text"},
+                wrapper_tag: "p"
+         ),
+         Post.tag_regex)
+       %>
+
+    <div class="card-text mb-3">
+      <%= raw @post.body %>
+    </div>
+
+    <% if @post.parent %>
+      <%= link_to "Parent Post", @post.parent, class: 'card-link' %>
+    <% end %>
 
     <% if policy(@post).update? %>
-    <div class="mb-4">
-      <%= link_to "edit", edit_post_path(@post) %>
-    </div>
+      <%= link_to "Edit", edit_post_path(@post), class: 'card-link' %>
     <% end %>
   </div>
 </div>
+
+<h2>Comments</h2>
 
 <% if current_user %>
   <div class="mt-2">

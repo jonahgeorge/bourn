@@ -19,7 +19,9 @@
 
   <div class='col-lg-9'>
     <% if is_signed_in %>
-      <%= render "parent_post_form" %>
+      <div class="hidden-print">
+        <%= render "parent_post_form" %>
+      </div>
     <% end %>
 
     <div class="list-group">

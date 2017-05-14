@@ -1,12 +1,16 @@
 source 'https://rubygems.org'
-ruby "2.3.0"
+ruby "2.4.1"
 
 gem 'rails', '~> 5.0.0'
 gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
+
+gem 'bootstrap', '~> 4.0.0.alpha6'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
 
 gem 'pundit'
 gem 'stripe'
@@ -18,11 +22,7 @@ gem 'mailgun-ruby', '~>1.1.4'
 gem 'chartkick'
 
 gem 'jquery-rails'
-gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   gem 'byebug', platform: :mri

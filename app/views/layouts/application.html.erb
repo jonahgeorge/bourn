@@ -10,14 +10,12 @@
     <title>Bourn</title>
     <%= csrf_meta_tags %>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-
     <%= stylesheet_link_tag    'application', media: 'all', integrity: true %>
     <%= javascript_include_tag 'application', integrity: true %>
   </head>
 
   <body>
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+    <nav class="navbar navbar-toggleable-md navbar-inverse">
       <div class="pl-0 pr-0 container col-lg-10 offset-lg-1">
       <button
         class="navbar-toggler navbar-toggler-right" type="button"
@@ -27,8 +25,8 @@
       </button>
 
       <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag "logo.png", width: 28, height: 28, class: "d-inline-block align-top" %>
-        <span class="hidden-sm-up">Bourn</span>
+        <%= image_tag "logo.svg", width: 28, height: 28, class: "d-inline-block align-top" %>
+        Bourn
       <% end %>
 
       <form class="form-inline my-2 my-lg-0" action="/posts" method="GET">
@@ -97,10 +95,6 @@
         <p>Designed and built by <a href="https://twitter.com/jonahgeorge" target="_blank">@jonahgeorge</a>.</p>
     </div>
     </footer>
-
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
     <!-- Weatherglass Tracker -->
     <script type="text/javascript">

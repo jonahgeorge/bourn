@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.visible_to(current_user).is_root_post
+    @posts = Post.includes(:likes).visible_to(current_user).is_root_post
     @posts = @posts.search_for(params[:q]) if params[:q]
     @posts = @posts.order(created_at: :desc)
 
@@ -55,7 +55,27 @@ class PostsController < ApplicationController
     end
   end
 
-private
+  def like
+    @like = Like.new(
+      user_id: current_user.id,
+      post_id: params[:id]
+    )
+
+    @like.save
+    redirect_to request.referer
+  end
+
+  def unlike
+    @like = Like.find_by(
+      user_id: current_user.id,
+      post_id: params[:id]
+    )
+
+    @like.destroy
+    redirect_to request.referer
+  end
+
+  private
 
   def post_params
     params.require(:post).permit(:parent_post_id, :body)

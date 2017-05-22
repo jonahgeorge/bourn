@@ -5,6 +5,8 @@ class Post < ApplicationRecord
     self.tags = self.body.scan(Post.tag_regex).flatten
   end
 
+  has_many :likes
+
   belongs_to :user
   has_many :children, class_name: "Post", foreign_key: :parent_post_id
   has_one :parent, class_name: "Post", primary_key: :parent_post_id, foreign_key: :id

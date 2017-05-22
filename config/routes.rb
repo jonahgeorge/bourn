@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update]
   resources :posts, except: [:new] do
+    get :like, on: :member
+    get :unlike, on: :member
+    # resource :like, only: [:create, :destroy]
     resources :posts, only: [:create]
   end
 

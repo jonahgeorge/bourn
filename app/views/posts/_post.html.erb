@@ -28,7 +28,17 @@
   </div>
 
   <%= link_to "Read", post, class: "card-link" %>
-  <%= link_to "Like", post, class: "card-link" %>
+
+  <% if current_user %>
+    <% if post.likes.exists?(user_id: current_user)  %>
+      <%= link_to "Unlike", [:unlike, post], class: 'card-link' %>
+    <% else %>
+      <%= link_to "Like", [:like, post], class: 'card-link' %>
+    <% end %>
+  <% else %>
+    <%= link_to "Like", new_session_path, class: "card-link" %>
+  <% end %>
+
   <% if policy(post).update? %>
     <%= link_to "Edit", edit_post_path(post), class: 'card-link' %>
   <% end %>

@@ -11,8 +11,7 @@ class Post < ApplicationRecord
   has_many :children, class_name: "Post", foreign_key: :parent_post_id
   has_one :parent, class_name: "Post", primary_key: :parent_post_id, foreign_key: :id
 
-  pg_search_scope :search_for, against: :body
-
+  pg_search_scope :search_for, against: :body, :using => [:tsearch, :trigram, :dmetaphone]
   validates :body, length: { minimum: 2 }
 
   def self.tag_regex

@@ -33,6 +33,14 @@
   </div>
 
   <div class="form-group">
-    <button class="btn btn-primary">Submit Payment</button>
+    <%= f.label :coupon %>
+    <%= f.text_field :coupon, class: "form-control" %>
+    <p class="form-text text-muted">
+      Use coupon <code>OSU420</code> for a free year subscription!
+    </p>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Submit Payment", class: "btn btn-primary" %>
   </div>
 <% end %>

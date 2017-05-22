@@ -11,31 +11,39 @@ class SubscriptionsController < ApplicationController
     if @form.valid?
       customer = Stripe::Customer.retrieve(current_user.stripe_id)
       customer.sources.create(source_params)
-      # customer.save
 
-      charge = process_charge(current_user.stripe_id)
+      charge = process_subscription(current_user.stripe_id, @form.coupon)
+
+      user = User.find(current_user.id)
+      user.subscribed_until = DateTime.now + 1.year
+      user.save
+
       redirect_to root_path
     else
       render :new
     end
   rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to new_subscription_path
+    flash.now[:alert] = e.message
+    render :new
   end
 
   private
 
   def subscription_form_params
-    params.require(:subscription_form).permit(:number, :exp_month, :exp_year, :cvc, :postal_code)
+    params.require(:subscription_form).permit(:number, :exp_month, :exp_year, :cvc, :postal_code, :coupon)
   end
 
-  def process_charge(stripe_id)
-    Stripe::Charge.create(
-      :customer    => stripe_id,
-      :amount      => 100, # $1 in pennies
-      :description => 'One year of Bourn membership',
-      :currency    => 'usd'
-    )
+  def process_subscription(stripe_id, coupon = nil)
+    params = {
+      :customer => stripe_id,
+      :plan     => 'standard-plan',
+    }
+
+    if coupon && !coupon.empty?
+      params[:coupon] = coupon
+    end
+
+    Stripe::Subscription.create(params)
   end
 
   def source_params

@@ -28,6 +28,7 @@
   </div>
 
   <%= link_to "Read", post, class: "card-link" %>
+  <%= link_to "Like", post, class: "card-link" %>
   <% if policy(post).update? %>
     <%= link_to "Edit", edit_post_path(post), class: 'card-link' %>
   <% end %>

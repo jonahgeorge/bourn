@@ -4,17 +4,32 @@
   <span>Amount: $1.00 per year</span>
 </label>
 
-<%= form_tag subscription_path do %>
+<%= form_for @form, url: url_for(controller: 'subscriptions', action: 'create') do |f| %>
   <div class="form-group">
-    <label for="card-element">
-      Credit or debit card
-    </label>
-    <div id="card-element">
-      <!-- a Stripe Element will be inserted here. -->
+    <%= f.label :number, "Credit card number" %>
+    <%= f.text_field :number, class: "form-control" %>
+  </div>
+
+  <div class="row">
+    <div class="col-3 form-group">
+      <%= f.label :exp_month, "Month" %>
+      <%= f.select :exp_month, 1..12, {}, { class: "form-control" } %>
     </div>
 
-    <!-- Used to display form errors -->
-    <div id="card-errors"></div>
+    <div class="col-3 form-group">
+      <%= f.label :exp_year, "Year" %>
+      <%= f.select :exp_year, Date.today.year..5.years.from_now.year, {}, { class: "form-control" } %>
+    </div>
+
+    <div class="col-6 form-group">
+      <%= f.label :cvc, "CVC" %>
+      <%= f.number_field :cvc, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :postal_code %>
+    <%= f.text_field :postal_code, class: "form-control" %>
   </div>
 
   <div class="form-group">

@@ -2,6 +2,7 @@ class SubscriptionsController < ApplicationController
   skip_before_action :require_subscription
 
   def new
+    flash.now[:notice] = "To keep our server running, we request a small fee of $1/year."
     @form = SubscriptionForm.new
   end
 
@@ -12,12 +13,13 @@ class SubscriptionsController < ApplicationController
       customer = Stripe::Customer.retrieve(current_user.stripe_id)
       customer.sources.create(source_params)
 
-      charge = process_subscription(current_user.stripe_id, @form.coupon)
+      process_subscription(current_user.stripe_id, @form.coupon)
 
       user = User.find(current_user.id)
       user.subscribed_until = DateTime.now + 1.year
       user.save
 
+      flash[:notice] "Thank you for subscription! Your payment has been processed."
       redirect_to root_path
     else
       render :new

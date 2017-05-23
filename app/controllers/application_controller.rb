@@ -25,8 +25,7 @@ class ApplicationController < ActionController::Base
   private
 
     def require_subscription
-      if current_user.subscribed_until == nil ||
-        current_user.subscribed_until < DateTime.now
+      if is_signed_in && (current_user.subscribed_until == nil || current_user.subscribed_until < DateTime.now)
           redirect_to new_subscription_path
       end
     end

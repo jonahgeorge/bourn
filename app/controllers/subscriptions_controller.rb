@@ -19,6 +19,7 @@ class SubscriptionsController < ApplicationController
       user.subscribed_until = DateTime.now + 1.year
       user.save
 
+      SubscriptionMailer.new_message(user).deliver
       flash[:notice] = "Thank you for subscription! Your payment has been processed."
       redirect_to root_path
     else

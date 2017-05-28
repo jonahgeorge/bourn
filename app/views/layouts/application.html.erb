@@ -19,6 +19,12 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', integrity: true %>
     <%= javascript_include_tag 'application', integrity: true %>
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@jonahgeorge" />
+    <meta name="twitter:title" content="<%= @page_title || 'Bourn · Your ideas matter' %>" />
+    <meta name="twitter:description" content="<%= @page_description || 'Welcome to Bourn, a place where everyone has a story to share. Bourn is an open-source social network. An alternative to monopolized commercial platforms, Bourn is operated in an open fashion and we value all contributions' %>" />
+    <meta name="twitter:image" content="<%= image_url 'logo.png' %>" />
   </head>
 
   <body>

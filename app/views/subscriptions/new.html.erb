@@ -1,46 +1,97 @@
-<h2>New Subscription</h2>
+<div class='row'>
+  <div class='col-sm-6'>
+    <div class='card'>
+      <div class='card-block'>
+        <h2 class='card-title'>New Subscription</h2>
 
-<label class="amount">
-  <span>Amount: $1.00 per year</span>
-</label>
+        <label class="amount">
+          <span>Amount: $1.00 per year</span>
+        </label>
 
-<%= form_for @form, url: url_for(controller: 'subscriptions', action: 'create') do |f| %>
-  <div class="form-group">
-    <%= f.label :number, "Credit card number" %>
-    <%= f.text_field :number, class: "form-control" %>
-  </div>
+        <%= form_for @form, url: url_for(controller: 'subscriptions', action: 'create') do |f| %>
+          <div class="form-group">
+            <%= f.label :number, "Credit card number" %>
+            <%= f.text_field :number, class: "form-control" %>
+          </div>
 
-  <div class="row">
-    <div class="col-3 form-group">
-      <%= f.label :exp_month, "Month" %>
-      <%= f.select :exp_month, 1..12, {}, { class: "form-control" } %>
+          <div class="row">
+            <div class="col-3 form-group">
+              <%= f.label :exp_month, "Month" %>
+              <%= f.select :exp_month, 1..12, {}, { class: "form-control" } %>
+            </div>
+
+            <div class="col-3 form-group">
+              <%= f.label :exp_year, "Year" %>
+              <%= f.select :exp_year, Date.today.year..5.years.from_now.year, {}, { class: "form-control" } %>
+            </div>
+
+            <div class="col-6 form-group">
+              <%= f.label :cvc, "CVC" %>
+              <%= f.number_field :cvc, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :postal_code %>
+            <%= f.text_field :postal_code, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :coupon %>
+            <%= f.text_field :coupon, class: "form-control" %>
+            <p class="form-text text-muted">
+              Use coupon <code>OSU420</code> for a free year subscription!
+            </p>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit "Submit Payment", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
     </div>
+  </div>
 
-    <div class="col-3 form-group">
-      <%= f.label :exp_year, "Year" %>
-      <%= f.select :exp_year, Date.today.year..5.years.from_now.year, {}, { class: "form-control" } %>
+  <div class='col-sm-6'>
+    <div class='card'>
+      <div class="card-block">
+        <h2 class="card-title">Partner Sites</h2>
+        <p class="card-text">Included below are other sites from CS295. Check them out!</p>
+      </div>
+      <ul class='list-group list-group-flush'>
+        <li class='list-group-item'>
+          <a href="http://doghousepolitics.com/" target="_blank">
+            <img width=28  src='https://i2.wp.com/doghousepolitics.com/wp-content/uploads/2017/05/cropped-DHP-logo-e1494355890457.jpg?fit=150%2C133&ssl=1'>
+            Doghouse Politics
+          </a>
+        </li>
+        <li class='list-group-item'>
+          <a href="http://save-cmlc.org/" target="_blank">Save Corvallis Multicultural Literacy Center</a>
+        </li>
+        <li class='list-group-item'>
+          <a href="http://www.hellolorem.com/" target="_blank">Hello Lorem</a>
+        </li>
+        <li class='list-group-item'>
+          <a href="https://cookingtutorials.net" target="_blank">
+            <img width=28  src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhLS0gR2VuZXJhdG9yOiBHcmF2aXQuaW8gLS0+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBzdHlsZT0iaXNvbGF0aW9uOmlzb2xhdGUiIHdpZHRoPSI1MTEiIGhlaWdodD0iNTExIj48Y2lyY2xlIHZlY3Rvci1lZmZlY3Q9Im5vbi1zY2FsaW5nLXN0cm9rZSIgY3g9IjAiIGN5PSIwIiByPSIxIiBmaWxsPSJyZ2IoMjE4LDYxLDYpIiB0cmFuc2Zvcm09Im1hdHJpeCgxMTguMjUsMCwwLDExOC4yNSwyNTUuNSwyNTUuNSkiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlPSJyZ2JhKDAsMCwwLDApIi8+PHJlY3QgeD0iNTMiIHk9IjIwOC42NjY2NjY2NjY2NjY2MyIgd2lkdGg9IjE0IiBoZWlnaHQ9IjEzOSIgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwwLDApIiBmaWxsPSJyZ2IoMjQwLDEzMSw2NikiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlPSJyZ2JhKDAsMCwwLDApIiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+PHJlY3QgeD0iMzYiIHk9IjIwMC42NjY2NjY2NjY2NjY2OSIgd2lkdGg9IjQ5IiBoZWlnaHQ9IjgiIHRyYW5zZm9ybT0ibWF0cml4KC0xLDAsMCwtMSwxMjEsNDA5LjMzMzMzMzMzMzMzMzM3KSIgZmlsbD0icmdiKDI0MCwxMzEsNjYpIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZT0icmdiYSgwLDAsMCwwKSIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIvPjxyZWN0IHg9IjM2IiB5PSIxNjEuNjY2NjY2NjY2NjY2NjkiIHdpZHRoPSI2LjUiIGhlaWdodD0iMzkiIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsMCwwKSIgZmlsbD0icmdiKDI0MCwxMzEsNjYpIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZT0icmdiYSgwLDAsMCwwKSIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIvPjxyZWN0IHg9Ijc4LjUiIHk9IjE2MS42NjY2NjY2NjY2NjY2OSIgd2lkdGg9IjYuNSIgaGVpZ2h0PSIzOSIgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwwLDApIiBmaWxsPSJyZ2IoMjQwLDEzMSw2NikiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlPSJyZ2JhKDAsMCwwLDApIiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+PHJlY3QgeD0iNTAiIHk9IjE2MS42NjY2NjY2NjY2NjY2OSIgd2lkdGg9IjYuNSIgaGVpZ2h0PSIzOSIgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwwLDApIiBmaWxsPSJyZ2IoMjQwLDEzMSw2NikiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlPSJyZ2JhKDAsMCwwLDApIiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+PHJlY3QgeD0iNjYiIHk9IjE2MS42NjY2NjY2NjY2NjY2OSIgd2lkdGg9IjYuNSIgaGVpZ2h0PSIzOSIgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwwLDApIiBmaWxsPSJyZ2IoMjQwLDEzMSw2NikiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlPSJyZ2JhKDAsMCwwLDApIiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+PHJlY3QgeD0iNDI4IiB5PSIxNjEuNjY2NjY2NjY2NjY2NjMiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxODYiIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsMCwwKSIgZmlsbD0icmdiKDI0MSw3NiwxMzQpIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZT0icmdiYSgwLDAsMCwwKSIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIvPjxwYXRoIGQ9IiBNIDQyOCAxNjIuOTk5OTk5OTk5OTk5OTQgQyA0MzcuOTYxNTQ0MDAyOTQ5MTUgMTU5LjY3OTQ4NTMzMjM0OTk0IDQ0My42NTQ1MzgzMDQ2NTg3MyAxNjUuOTg3ODcxNjM3OTkyMDEgNDQ5LjMzMzMzMzMzMzMzMzM3IDE3MS42NjY2NjY2NjY2NjY2MyBDIDQ1Ny40MTg0NjM2MTAxMzA5IDE3NS43MDkyMzE4MDUwNjU0IDQ1Ny4zMzMzMzMzMzMzMzMzNyAxOTEuNDYzMDkzMjYyNjkwMTcgNDU3LjMzMzMzMzMzMzMzMzM3IDE5Ny42NjY2NjY2NjY2NjY2MyBDIDQ1Ny4zMzMzMzMzMzMzMzMzNyAyMDguNzA2Nzg2NDkzMjc3NzIgNDU3LjM4MDY5NjA2NTk0MDc1IDIxNS41NzE5NDEyMDE0NTIyMyA0NTMuMzMzMzMzMzMzMzMzMzcgMjIzLjY2NjY2NjY2NjY2NjYzIEMgNDQ5LjczMDEwMzE4OTAwMzU2IDIzMC44NzMxMjY5NTUzMjU5MiA0NDYuMzg2OTc4MTM2NDcwNTMgMjM1Ljk0NjM1NTE5Njg2Mjc4IDQ0MiAyNDAuMzMzMzMzMzMzMzMzMyBDIDQ0MS43MDk2NzYzMjAwMzczIDI0MC42MjM2NTcwMTMyOTYgNDM2IDI0OC40NDE1MjA1NjM2NzUxNyA0MzYgMjQ3LjY2NjY2NjY2NjY2NjYzIEMgNDM2IDIzNy40NDQ0NDQ0NDQ0NDQ0IDQzNiAyMjguNTU1NTU1NTU1NTU1NTQgNDM2IDIxOS42NjY2NjY2NjY2NjY2MyBDIDQzNiAyMDguNDcwOTkwODM2MzA4NTQgNDM1LjMzMzMzMzMzMzMzMzM3IDE5OC42NzY0NjMxMTY5MTk1NCA0MzUuMzMzMzMzMzMzMzMzMzcgMTg4Ljk5OTk5OTk5OTk5OTk0IEMgNDM1LjMzMzMzMzMzMzMzMzM3IDE3OC45OTk5OTk5OTk5OTk5NyA0MzUuMzMzMzMzMzMzMzMzMzcgMTcwLjMzMzMzMzMzMzMzMzMgNDM1LjMzMzMzMzMzMzMzMzM3IDE2MS42NjY2NjY2NjY2NjY2MyBMIDQyOCAxNjIuOTk5OTk5OTk5OTk5OTQgWiAiIGZpbGw9InJnYigyNDEsNzYsMTM0KSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2U9InJnYigyNDEsNzYsMTM0KSIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIvPjxjaXJjbGUgdmVjdG9yLWVmZmVjdD0ibm9uLXNjYWxpbmctc3Ryb2tlIiBjeD0iMCIgY3k9IjAiIHI9IjEiIGZpbGw9InJnYigyNDMsMjA1LDEwNCkiIHRyYW5zZm9ybT0ibWF0cml4KDg2LDAsMCw4NiwyNTUuNSwyNTUuNSkiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlPSJyZ2JhKDAsMCwwLDApIi8+PC9zdmc+'>
+            Cooking Tutorials
+          </a>
+        </li>
+        <li class='list-group-item'>
+          <a href="https://renote.org/" target="_blank">Renote</a>
+        </li>
+        <li class='list-group-item'>
+          <a href="http://endeolion.com" target="_blank">
+            <img width=28  src='https://i1.wp.com/endeolion.com/wp-content/uploads/2017/05/logo-bw-trace.png?w=250&ssl=1'>
+            Endeolion</a>
+        </li>
+        <li class='list-group-item'>
+          <a href="https://pamvanlonden.com/" target="_blank">Creating Every Day</a>
+        </li>
+      </ul>
     </div>
-
-    <div class="col-6 form-group">
-      <%= f.label :cvc, "CVC" %>
-      <%= f.number_field :cvc, class: "form-control" %>
-    </div>
+    <br>
+    <%= image_tag "qrcode.png", class: "mx-auto d-block img-fluid" %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :postal_code %>
-    <%= f.text_field :postal_code, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :coupon %>
-    <%= f.text_field :coupon, class: "form-control" %>
-    <p class="form-text text-muted">
-      Use coupon <code>OSU420</code> for a free year subscription!
-    </p>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit "Submit Payment", class: "btn btn-primary" %>
-  </div>
-<% end %>
+</div>

@@ -11,14 +11,7 @@
     <%= csrf_meta_tags %>
 
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/bloodhound.min.js'></script>
-
     <%= stylesheet_link_tag    'application', media: 'all', integrity: true %>
-    <%= javascript_include_tag 'application', integrity: true %>
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@jonahgeorge" />
@@ -100,16 +93,18 @@
     </main>
 
     <footer class="bd-footer text-muted">
-    <div class="col-10 offset-1">
-        <ul class="bd-footer-links">
-          <li><a target="_blank" href="https://github.com/jonahgeorge/bourn">GitHub</a></li>
-          <li><%= link_to "Contact", new_messages_path %></li>
-          <li><%= link_to "About", about_path %></li>
-          <li><%= link_to "Policies", policies_path %></li>
-        </ul>
-        <p>Designed and built by <a href="https://twitter.com/jonahgeorge" target="_blank">@jonahgeorge</a>.</p>
-    </div>
+      <div class="col-10 offset-1">
+          <ul class="bd-footer-links">
+            <li><a target="_blank" href="https://github.com/jonahgeorge/bourn">GitHub</a></li>
+            <li><%= link_to "Contact", new_messages_path %></li>
+            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to "Policies", policies_path %></li>
+          </ul>
+          <p>Designed and built by <a href="https://twitter.com/jonahgeorge" target="_blank">@jonahgeorge</a>.</p>
+      </div>
     </footer>
+
+    <%= javascript_include_tag 'application', integrity: true %>
 
     <!-- Weatherglass Tracker -->
     <script type="text/javascript">
@@ -134,28 +129,6 @@
 
       ga('create', 'UA-98818441-1', 'auto');
       ga('send', 'pageview');
-    </script>
-
-    <script type="text/javascript">
-      var tags = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        prefetch: '/tags',
-        remote: {
-          url: '/tags',
-          wildcard: '%QUERY'
-        }
-      });
-
-      $('#search-form').typeahead({
-        hint: true,
-        highlight: true,
-        minLength: 1
-      },
-      {
-        name: 'tags',
-        source: tags
-      });
     </script>
   </body>
 </html>

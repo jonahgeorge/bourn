@@ -1,4 +1,4 @@
-<h2>Reset Password</h2>
+<h1>Reset Password</h1>
 
 <%= form_for @form, url: url_for(controller: :reset_passwords, action: :update), method: :put do |f| %>
   <%= f.hidden_field :reset_password_token %>

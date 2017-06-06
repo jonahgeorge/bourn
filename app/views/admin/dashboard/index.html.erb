@@ -1,4 +1,4 @@
-<h2>Dashboard</h2>
+<h1>Dashboard</h1>
 
 <label>Traffic Over the Past Day (by hour)</label>
 <%= line_chart "#{ENV["WEATHERGLASS_HOST"]}/sites/#{ENV["WEATHERGLASS_SITE_ID"]}/reports/visits_over_time?interval=hour&range=day" %>

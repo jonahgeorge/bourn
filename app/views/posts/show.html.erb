@@ -53,3 +53,15 @@
     <%= render "posts/post", { post: post } %>
   <% end %>
 </ul>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "CreativeWork",
+  "author": "<%= @post.user.name %>",
+  "dateCreated": "<%= @post.created_at %>",
+  "text": "<%= @post.body %>",
+  "commentCount": <%= @post.children.count %>
+}
+</script>
+

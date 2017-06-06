@@ -6,7 +6,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="google-site-verification" content="Onv-ygarc19a_4tMWG_AsLAxh2-3WSUKf6ntvXZstdk" />
     <meta name="keywords" content="microblogging, twitter alternative, alternative social network, blog, blogging, mastodon alternative, medium alternative, microbloggin platform, blogging platform, wordpress alternative" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="microblogging, twitter alternative, alternative social network, blog, blogging, mastodon alternative, medium alternative, microbloggin platform, blogging platform, wordpress alternative, open source alternative microblogger, jonahs tech blog, social media alternative blog" />
+    <meta name="description" content="Welcome to Bourn, a place where everyone has a story to share. Bourn is an open-source social network. An alternative to monopolized commercial platforms, Bourn is operated in an open fashion and we value all contributions" />
 
     <title>Bourn · Microblogging for everyone</title>
     <%= csrf_meta_tags %>
@@ -36,12 +37,14 @@
         <span style="font-family: 'PT Mono', sans-serif">Bourn</span>
       <% end %>
 
+
       <form class="form-inline my-2 my-lg-0 hidden-print" action="/posts" method="GET">
         <input id="search-form" name="q" class="search-form form-control mr-sm-2"
           type="search" placeholder="Search" autcomplete="off" value="<%= params[:q] %>">
       </form>
-
       <div class="clearfix"></div>
+
+      <span class='navbar-text col-lg-3'>Microblogging for Everyone</span>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
@@ -99,7 +102,10 @@
             <li><%= link_to "About", about_path %></li>
             <li><%= link_to "Policies", policies_path %></li>
           </ul>
+
           <p>Designed and built by <a href="https://twitter.com/jonahgeorge" target="_blank">@jonahgeorge</a>.</p>
+          <br>
+          <p>Bourn - Microblogging for Everyone</p>
       </div>
     </footer>
 

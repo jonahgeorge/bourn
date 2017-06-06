@@ -9,7 +9,7 @@
       <div class="list-group list-group-flush">
         <% User.find_each do |user| %>
           <%= link_to user, class: "list-group-item" do %>
-            <img src="<%= avatar_url user %>" width=32 class="mr-2" />
+            <img src="<%= avatar_url user %>" width=32 class="mr-2" alt="<%= user.name %>"/>
             <%= user.name %>
           <% end %>
         <% end %>

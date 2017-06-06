@@ -6,7 +6,7 @@
   <div class="form-group">
     <%= f.label nil, "Profile Picture" %>
     <br/>
-    <img src="<%= avatar_url @user %>" class="rounded" alt="Responsive image" width=128>
+    <img src="<%= avatar_url @user %>" class="rounded" alt="Responsive image" width=128 alt="<%= @user.name %>">
     <p class="form-text text-muted">
       You can change your profile picture on <a target="_blank" href="http://gravatar.com/">Gravatar</a>.
     </p>

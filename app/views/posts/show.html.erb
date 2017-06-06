@@ -4,7 +4,7 @@
     <div class="media">
       <%= link_to @post.user do %>
         <img class="d-flex mr-3 media-object rounded"
-             src="<%= avatar_url @post.user %>" width=48>
+             src="<%= avatar_url @post.user %>" width=48 alt="<%= @post.user.name %>">
       <% end %>
 
       <div class="media-body">
